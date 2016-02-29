@@ -9,6 +9,7 @@ gem 'sqlite3', group: [:development, :test]
 
 gem 'bootstrap-sass', '~> 3.3', '>= 3.3.5.1'
 gem 'font-awesome-sass', '~> 4.5'
+gem 'devise', '~> 3.5', '>= 3.5.6'
 
 
  # Use postgresql as the database for production
