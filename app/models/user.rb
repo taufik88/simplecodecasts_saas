@@ -7,10 +7,14 @@ class User < ActiveRecord::Base
   attr_accessor :stripe_card_token
 
   def save_with_payment
-  	if valid?
-  		customer = Stripe::Customer.create(description: email, plan: plan_id, card: stripe_card_token)
-  		self.stripe_customer_token = customer.plan_id
-  		save!
-  	end
+    if valid?
+      # use stripe gem to send info to stripe server.
+      # stripe will return back a customer id.
+      customer = Stripe::Customer.create(description: email, plan: plan_id, card: stripe_card_token)
+      # set property of user equal to id stripe returns back
+      self.stripe_customer_token = customer.id
+      # save user
+      save!
+    end
   end
 end
